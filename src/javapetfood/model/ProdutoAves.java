@@ -20,5 +20,16 @@ public class ProdutoAves extends Produto {
 		this.especies = especies;
 	}
 	
+	public void visualizar () {
+		String especie = "";
+		switch(this.especies) {
+			case 1 -> especie = "Doméstica";
+			case 2 -> especie = "Silvestre";
+			case 3 -> especie = "Exótica";
+		}
+		
+		super.visualizar();
+		System.out.println("Espécies: " + especie);
+	}
 
 }
