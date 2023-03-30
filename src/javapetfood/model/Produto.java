@@ -69,4 +69,22 @@ public void setQuantidadeEstoque(int quantidadeEstoque) {
 	this.quantidadeEstoque = quantidadeEstoque;
 }
 
+public void visualizar() {
+	String tipo = "";
+	switch(this.tipo) {
+		case 1 -> tipo = "Terrestre";
+		case 2 -> tipo = "Aves";
+	}
+	System.out.println("**********************************************");
+	System.out.println("              DADOS DO PRODUTO	              ");
+	System.out.println("**********************************************");
+	System.out.println("Código do Produto: " + this.codigo);
+	System.out.println("Nome do produto: " + this.nome);
+	System.out.println("Tipo do Produto " + tipo);
+	System.out.println("Preço do Produto: " + this.preco);
+	System.out.println("Validade do Produto " + this.dataValidade);
+	System.out.println("Quantidade em estoque: " + this.quantidadeEstoque);
+	
+}
+
 }
