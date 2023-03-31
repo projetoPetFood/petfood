@@ -29,7 +29,7 @@ public class ProdutoAves extends Produto {
 		}
 		
 		super.visualizar();
-		System.out.println("Espécies: " + especie);
+		System.out.println("Espécie: " + especie);
 	}
 
 }

@@ -1,21 +1,22 @@
 package javapetfood.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javapetfood.model.Produto;
 import javapetfood.repository.ProdutoRepository;
 
 public class ProdutoController implements ProdutoRepository {
-	
 	private ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
+	LocalDate dataAtual = LocalDate.now();
 	int codigo = 0;
 
 	@Override
 	public void cadastrar(Produto produto) {
 		if (listaProdutos.add(produto)) {
-			System.out.println("O produto de código" + produto.getCodigo() +  " foi cadastrado com sucesso!");
+			System.out.println("O produto de código " + produto.getCodigo() +  " foi cadastrado com sucesso!");
 		}
 		else {
-			System.out.println("O cadastramento do produto de código" + produto.getCodigo() + " falhou!");
+			System.out.println("O cadastramento do produto de código " + produto.getCodigo() + " falhou!");
 		}
 	}
 
@@ -26,6 +27,9 @@ public class ProdutoController implements ProdutoRepository {
 			if (produto.getQuantidadeEstoque() == 0) {
 				System.out.println("PRODUTO FORA DE ESTOQUE!");
 			}
+			if (produto.getDataValidade().compareTo(dataAtual) < 0) {
+				System.out.println("PRODUTO FORA DA VALIDADE!");
+			}
 		});
 	}
 
@@ -35,6 +39,12 @@ public class ProdutoController implements ProdutoRepository {
 		
 		if (produto != null) {
 			produto.visualizar();
+			if (produto.getQuantidadeEstoque() == 0) {
+				System.out.println("PRODUTO FORA DE ESTOQUE!");
+			}
+			if (produto.getDataValidade().compareTo(dataAtual) < 0) {
+				System.out.println("PRODUTO FORA DA VALIDADE!");
+			}
 		}
 		else {
 			System.out.println("O produto de código " + codigo + " não foi encontrado!");
@@ -94,7 +104,7 @@ public class ProdutoController implements ProdutoRepository {
 				System.out.println("A quantidade " + quantidade + " solicitada foi removida do estoque do produto de código " + codigo + "!");
 			}
 			else {
-				System.out.println("Quantidade em estoque do produto de código " + codigo + " é insuficiente!");
+				System.out.println("A quantidade em estoque do produto de código " + codigo + " é insuficiente!");
 			}
 		}
 		else {

@@ -46,8 +46,8 @@ public class ProdutoTerrestre extends Produto {
 
 		}
 		super.visualizar();
-		System.out.println("Idade do seu PET" + petIdade);
-		System.out.println("Porte do seu PET" + petPorte);
+		System.out.println("Idade: " + petIdade);
+		System.out.println("Porte: " + petPorte);
 
 	}
 }
