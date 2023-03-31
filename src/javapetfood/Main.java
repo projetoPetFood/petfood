@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import javapetfood.controller.ProdutoController;
 import javapetfood.model.Produto;
 import javapetfood.model.ProdutoAves;
@@ -22,8 +21,20 @@ public class Main {
 		
 		ProdutoController produtos = new ProdutoController();
 		
+		LocalDate data1 = LocalDate.parse("2023-03-10");
+		ProdutoTerrestre produto1 = new ProdutoTerrestre(1, "Sachê", produtos.gerarCodigo(), 10.0f, data1, 10, 1, 1);
+		produtos.cadastrar(produto1);
+		LocalDate data2 = LocalDate.parse("2023-04-10");
+		ProdutoTerrestre produto2 = new ProdutoTerrestre(1, "Ração Cachorro", produtos.gerarCodigo(), 10.0f, data2, 10, 2, 2);
+		produtos.cadastrar(produto2);
+		LocalDate data3 = LocalDate.parse("2023-03-20");
+		ProdutoAves produto3 = new ProdutoAves(2, "Girassol", produtos.gerarCodigo(), 10.0f, data3, 0, 1);
+		produtos.cadastrar(produto3);
+		LocalDate data4 = LocalDate.parse("2023-03-30");
+		ProdutoAves produto4 = new ProdutoAves(2, "Sementes Variadas", produtos.gerarCodigo(), 10.0f, data4, 10, 1);
+		produtos.cadastrar(produto4);
+		
 		while (true) {
-
 			System.out.println("*****************************************************");
 			System.out.println("*                       ,_,                         *") ;
 			System.out.println("*                      (O,O)                        *") ;
@@ -36,9 +47,9 @@ public class Main {
 			System.out.println("*****************************************************");
 			System.out.println("*                                                   *");
 			System.out.println("*           1 - Cadastrar Produtos                  *");
-			System.out.println("*           2 - Listar todos os Produtos            *");
+			System.out.println("*           2 - Listar Todos os Produtos            *");
 			System.out.println("*           3 - Buscar Produto por Código           *");
-			System.out.println("*           4 - Alterar descrição de Produtos       *");
+			System.out.println("*           4 - Alterar Descrição de Produtos       *");
 			System.out.println("*           5 - Deletar Produtos                    *");
 			System.out.println("*           6 - Entrada de Estoque                  *");
 			System.out.println("*           7 - Saída de Estoque                    *");
@@ -64,18 +75,17 @@ public class Main {
 			}
 			
 			switch(opcao) {
-			
 				case 1:
 					System.out.println("Cadastrar Produtos\n\n");
 					
 					System.out.println("Digite o Nome do Produto: ");
 					leia.nextLine();
 					nome = leia.nextLine();
-					System.out.println("Digite o Tipo do Produto: (1 - Terrestres/2 - Aves) ");
+					System.out.println("Digite o Tipo do Produto: (1- Terrestres/2- Aves) ");
 					tipo = leia.nextInt();
-					System.out.println("Digite o Preço unitário dos Produtos: ");
+					System.out.println("Digite o Preço Unitário dos Produtos: ");
 					preco = leia.nextFloat();
-					System.out.println("Digite a data de Vencimento: (yyyy-MM-dd)");
+					System.out.println("Digite a Data de Vencimento: (yyyy-MM-dd)");
 					leia.nextLine();
 					data = leia.nextLine();
 					vencimento = LocalDate.parse(data);
@@ -84,19 +94,19 @@ public class Main {
 					
 					switch (tipo) {
 						case 1:
-							System.out.println("Digite a idade do animal: (1- Filhote/2- Adulto/3- Idoso");		
+							System.out.println("Digite a Idade do Animal: (1- Filhote/2- Adulto/3- Idoso)");		
 							idade = leia.nextInt();
-							System.out.println("Digite o Porte do animal: (1- Pequeno/2- Médio/3- Grande");
+							System.out.println("Digite o Porte do Animal: (1- Pequeno/2- Médio/3- Grande)");
 							porte = leia.nextInt();
 							
-							produtos.cadastrar(new ProdutoTerrestre(produtos.gerarCodigo(), nome, tipo, preco, vencimento, estoque, idade, porte));
+							produtos.cadastrar(new ProdutoTerrestre(tipo, nome, produtos.gerarCodigo(), preco, vencimento, estoque, idade, porte));
 							
 							break;
 						case 2:
-							System.out.println("Digite a Espécie do animal: (1- Doméstica/2- Silvestre/3- Exótica");
+							System.out.println("Digite a Espécie do Animal: (1- Doméstica/2- Silvestre/3- Exótica)");
 							especie = leia.nextInt();
 							
-							produtos.cadastrar(new ProdutoAves(produtos.gerarCodigo(), nome, tipo, preco, vencimento, estoque, especie));
+							produtos.cadastrar(new ProdutoAves(tipo, nome, produtos.gerarCodigo(), preco, vencimento, estoque, especie));
 							
 							break;
 					}
@@ -104,14 +114,14 @@ public class Main {
 					keyPress();
 					break;
 				case 2:
-					System.out.println("Listar todos os Produtos\n\n");
+					System.out.println("Listar Todos os Produtos\n\n");
 					produtos.listarTodos();
 					
 					keyPress();
 					break;
 				case 3:
 					System.out.println("Buscar Produto por Código\n\n");
-					System.out.println("Digite o código do produto: ");
+					System.out.println("Digite o Código do Produto: ");
 					codigo = leia.nextInt();
 					
 					produtos.buscarPorCodigo(codigo);
@@ -119,8 +129,8 @@ public class Main {
 					keyPress();
 					break;
 				case 4:
-					System.out.println("Alterar descrição de Produtos\n\n");
-					System.out.println("Digite o código do produto:  ");
+					System.out.println("Alterar Descrição de Produtos\n\n");
+					System.out.println("Digite o Código do Produto: ");
 					codigo = leia.nextInt();
 					
 					Produto produto = produtos.buscarNaLista(codigo); 
@@ -130,7 +140,7 @@ public class Main {
 					nome = leia.nextLine();
 					System.out.println("Digite o Preço do Produto: ");
 					preco = leia.nextFloat();
-					System.out.println("Digite a data de Vencimento: (yyyy-MM-dd)");
+					System.out.println("Digite a Data de Vencimento: (yyyy-MM-dd)");
 					leia.nextLine();
 					data = leia.nextLine();
 					vencimento = LocalDate.parse(data);
@@ -139,19 +149,19 @@ public class Main {
 					
 					switch (produto.getTipo()) {
 						case 1:
-							System.out.println("Digite a idade do animal: (1- Filhote/2- Adulto/3- Idoso");		
+							System.out.println("Digite a Idade do Animal: (1- Filhote/2- Adulto/3- Idoso)");		
 							idade = leia.nextInt();
-							System.out.println("Digite o Porte do animal: (1- Pequeno/2- Médio/3- Grande");
+							System.out.println("Digite o Porte do Animal: (1- Pequeno/2- Médio/3- Grande)");
 							porte = leia.nextInt();
 							
-							produtos.alterar(new ProdutoTerrestre(codigo, nome, produto.getTipo(), preco, vencimento, estoque, idade, porte));
+							produtos.alterar(new ProdutoTerrestre(produto.getTipo(), nome, codigo, preco, vencimento, estoque, idade, porte));
 							
 							break;
 						case 2:
-							System.out.println("Digite a Espécie do animal: (1- Doméstica/2- Silvestre/3- Exótica");
+							System.out.println("Digite a Espécie do Animal: (1- Doméstica/2- Silvestre/3- Exótica)");
 							especie = leia.nextInt();
 							
-							produtos.alterar(new ProdutoAves(codigo, nome, produto.getTipo(), preco, vencimento, estoque, especie));
+							produtos.alterar(new ProdutoAves(produto.getTipo(), nome, codigo, preco, vencimento, estoque, especie));
 							
 							break;
 					}
@@ -161,7 +171,7 @@ public class Main {
 				case 5:
 					System.out.println("Deletar Produto\n\n");
 					
-					System.out.println("Digite o código do Produto: ");
+					System.out.println("Digite o Código do Produto: ");
 					codigo = leia.nextInt();
 					
 					produtos.deletar(codigo);
@@ -170,9 +180,9 @@ public class Main {
 					break;
 				case 6:
 					System.out.println("Entrada no Estoque\n\n");
-					System.out.println("Digite o código do Produto: ");
+					System.out.println("Digite o Código do Produto: ");
 					codigo = leia.nextInt();
-					System.out.println("Digite a quantidade de entrada de Estoque: ");
+					System.out.println("Digite a Quantidade de Entrada de Estoque: ");
 					quantidade = leia.nextInt();
 					
 					
@@ -182,9 +192,9 @@ public class Main {
 					break;
 				case 7:
 					System.out.println("Saída de Estoque\n\n");
-					System.out.println("Digite o código do Produto: ");
+					System.out.println("Digite o Código do Produto: ");
 					codigo = leia.nextInt();
-					System.out.println("Digite a quantidade de saída de Estoque: ");
+					System.out.println("Digite a Quantidade de Saída de Estoque: ");
 					quantidade = leia.nextInt();
 					
 					produtos.sairEstoque(codigo, quantidade);
@@ -202,7 +212,7 @@ public class Main {
 
 	private static void keyPress() {
 		try {
-			System.out.println("Pressione a tecla enter para continuar...");
+			System.out.println("Pressione a tecla Enter para continuar...");
 			System.in.read();
 		}catch (IOException e) {
 			System.out.println("Opção Inválida!");
