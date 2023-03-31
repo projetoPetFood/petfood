@@ -2,12 +2,12 @@ package javapetfood.model;
 
 import java.time.LocalDate;
 
-public class ProdutoTerreste extends Produto {
+public class ProdutoTerrestre extends Produto {
 
 	private int idade;
 	private int porte;
 
-	public ProdutoTerreste(int tipo, String nome, int codigo, float preco, LocalDate dataValidade,
+	public ProdutoTerrestre(int tipo, String nome, int codigo, float preco, LocalDate dataValidade,
 			int quantidadeEstoque, int idade, int porte) {
 		super(tipo, nome, codigo, preco, dataValidade, quantidadeEstoque);
 		this.idade = idade;
