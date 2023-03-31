@@ -1,8 +1,12 @@
 package javapetfood.model;
 
+import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public abstract class Produto {
+	
+	NumberFormat nf = NumberFormat.getCurrencyInstance();
 	
 	private int tipo;
 	private String nome;
@@ -81,8 +85,8 @@ public void visualizar() {
 	System.out.println("Código: " + this.codigo);
 	System.out.println("Produto: " + this.nome);
 	System.out.println("Tipo: " + tipo);
-	System.out.println("Preço: " + this.preco);
-	System.out.println("Validade: " + this.dataValidade);
+	System.out.println("Preço: " + nf.format(this.preco));
+	System.out.println("Validade: " + this.dataValidade.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 	System.out.println("Quantidade: " + this.quantidadeEstoque);
 	
 }
