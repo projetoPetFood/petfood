@@ -13,10 +13,10 @@ public class ProdutoController implements ProdutoRepository {
 	@Override
 	public void cadastrar(Produto produto) {
 		if (listaProdutos.add(produto)) {
-			System.out.println("O produto de código " + produto.getCodigo() +  " foi cadastrado com sucesso!");
+			System.out.println("\nO produto de código " + produto.getCodigo() +  " foi cadastrado com sucesso!");
 		}
 		else {
-			System.out.println("O cadastramento do produto de código " + produto.getCodigo() + " falhou!");
+			System.out.println("\nO cadastramento do produto de código " + produto.getCodigo() + " falhou!");
 		}
 	}
 
@@ -47,7 +47,7 @@ public class ProdutoController implements ProdutoRepository {
 			}
 		}
 		else {
-			System.out.println("O produto de código " + codigo + " não foi encontrado!");
+			System.out.println("\nO produto de código " + codigo + " não foi encontrado!");
 		}
 	}
 
@@ -57,10 +57,10 @@ public class ProdutoController implements ProdutoRepository {
 		
 		if (produtoParaAlterar != null) {
 			listaProdutos.set(listaProdutos.indexOf(produtoParaAlterar), produto);
-			System.out.println("Os dados do produto de código " + produto.getCodigo() + " foram alterados com sucesso!");
+			System.out.println("\nOs dados do produto de código " + produto.getCodigo() + " foram alterados com sucesso!");
 		}
 		else {
-			System.out.println("O produto de código " + produto.getCodigo() + " não foi encontrado para ser alterado!");
+			System.out.println("\nO produto de código " + produto.getCodigo() + " não foi encontrado para ser alterado!");
 		}
 	}
 
@@ -70,14 +70,14 @@ public class ProdutoController implements ProdutoRepository {
 		
 		if (produto != null) {
 			if (listaProdutos.remove(produto)) {
-				System.out.println("O produto de código " + codigo + " foi excluído com sucesso!");
+				System.out.println("\nO produto de código " + codigo + " foi excluído com sucesso!");
 			}
 			else {
-				System.out.println("A exclusão do produto de código " + codigo + " falhou");
+				System.out.println("\nA exclusão do produto de código " + codigo + " falhou");
 			}
 		}
 		else {
-			System.out.println("O produto de código " + codigo + " não foi encontrado!");
+			System.out.println("\nO produto de código " + codigo + " não foi encontrado!");
 		}
 	}
 
@@ -87,10 +87,10 @@ public class ProdutoController implements ProdutoRepository {
 		
 		if (produto != null) {
 			produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() + quantidade);
-			System.out.println("A quantidade " + quantidade + " solicitada foi adicionada ao estoque do produto de código " + codigo + "!");
+			System.out.println("\nA quantidade " + quantidade + " solicitada foi adicionada ao estoque do produto de código " + codigo + "!");
 		}
 		else {
-			System.out.println("O produto de código " + codigo + " não foi encontrado!");
+			System.out.println("\nO produto de código " + codigo + " não foi encontrado!");
 		}
 	}
 
@@ -101,14 +101,14 @@ public class ProdutoController implements ProdutoRepository {
 		if (produto != null) {
 			if (produto.getQuantidadeEstoque() >= quantidade) {
 				produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() - quantidade);
-				System.out.println("A quantidade " + quantidade + " solicitada foi removida do estoque do produto de código " + codigo + "!");
+				System.out.println("\nA quantidade " + quantidade + " solicitada foi removida do estoque do produto de código " + codigo + "!");
 			}
 			else {
-				System.out.println("A quantidade em estoque do produto de código " + codigo + " é insuficiente!");
+				System.out.println("\nA quantidade em estoque do produto de código " + codigo + " é insuficiente!");
 			}
 		}
 		else {
-			System.out.println("O produto de código " + codigo + " não foi encontrado!");
+			System.out.println("\nO produto de código " + codigo + " não foi encontrado!");
 		}
 	}
 	
