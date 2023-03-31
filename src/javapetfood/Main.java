@@ -8,6 +8,7 @@ import javapetfood.controller.ProdutoController;
 import javapetfood.model.Produto;
 import javapetfood.model.ProdutoAves;
 import javapetfood.model.ProdutoTerrestre;
+import javapetfood.util.Cores;
 
 public class Main {
 
@@ -35,7 +36,7 @@ public class Main {
 		produtos.cadastrar(produto4);
 		
 		while (true) {
-			System.out.println("*****************************************************");
+			System.out.println(Cores.TEXT_WHITE + Cores.ANSI_BLACK_BACKGROUND +"*****************************************************");
 			System.out.println("*                       ,_,                         *") ;
 			System.out.println("*                      (O,O)                        *") ;
 			System.out.println("*                      (   )                        *") ;
@@ -46,18 +47,18 @@ public class Main {
 			System.out.println("*      `-^-'                                        *");
 			System.out.println("*****************************************************");
 			System.out.println("*                                                   *");
-			System.out.println("*           1 - Cadastrar Produtos                  *");
+			System.out.println("*           1 - Cadastrar Produto                   *");
 			System.out.println("*           2 - Listar Todos os Produtos            *");
 			System.out.println("*           3 - Buscar Produto por Código           *");
-			System.out.println("*           4 - Alterar Descrição de Produtos       *");
-			System.out.println("*           5 - Deletar Produtos                    *");
+			System.out.println("*           4 - Alterar Descrição de Produto        *");
+			System.out.println("*           5 - Deletar Produto                     *");
 			System.out.println("*           6 - Entrada de Estoque                  *");
 			System.out.println("*           7 - Saída de Estoque                    *");
 			System.out.println("*           8 - Sair                                *");
 			System.out.println("*                                                   *");
 			System.out.println("*****************************************************");
 			System.out.println("Entre com a opção desejada:                          ");
-			System.out.println("                                                     ") ;
+			System.out.println("                                                     " + Cores.TEXT_RESET) ;
 
 			try {
 				opcao = leia.nextInt();
@@ -76,14 +77,14 @@ public class Main {
 			
 			switch(opcao) {
 				case 1:
-					System.out.println("Cadastrar Produtos\n\n");
+					System.out.println("Cadastrar Produto\n\n");
 					
 					System.out.println("Digite o Nome do Produto: ");
 					leia.nextLine();
 					nome = leia.nextLine();
 					System.out.println("Digite o Tipo do Produto: (1- Terrestres/2- Aves) ");
 					tipo = leia.nextInt();
-					System.out.println("Digite o Preço Unitário dos Produtos: ");
+					System.out.println("Digite o Preço Unitário dos Produto: ");
 					preco = leia.nextFloat();
 					System.out.println("Digite a Data de Vencimento: (yyyy-MM-dd)");
 					leia.nextLine();
@@ -114,7 +115,7 @@ public class Main {
 					keyPress();
 					break;
 				case 2:
-					System.out.println("Listar Todos os Produtos\n\n");
+					System.out.println("Listar Todos os Produto\n\n");
 					produtos.listarTodos();
 					
 					keyPress();
@@ -129,7 +130,7 @@ public class Main {
 					keyPress();
 					break;
 				case 4:
-					System.out.println("Alterar Descrição de Produtos\n\n");
+					System.out.println("Alterar Descrição de Produto\n\n");
 					System.out.println("Digite o Código do Produto: ");
 					codigo = leia.nextInt();
 					
